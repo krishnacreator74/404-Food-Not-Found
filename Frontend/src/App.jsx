@@ -164,6 +164,21 @@ gsap.to(frame, {
         overwrite: "auto",
       });
     }
+    // hide canvas near end of video
+    if (current >= 30) {
+    gsap.to(canvas, {
+      opacity: 0,
+      duration: 0.5,
+      overwrite: "auto",
+    });
+    } else {
+    gsap.to(canvas, {
+      opacity: 1,
+      duration: 0.5,
+      overwrite: "auto",
+    });
+  }
+
   },
 });
 
