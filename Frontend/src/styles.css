@@ -1,15 +1,134 @@
 body {
   margin: 0;
-  background: black;
   overflow-x: hidden;
+  background:
+    radial-gradient(circle at center,
+      rgba(120, 0, 255, 0.2) 0%,
+      rgba(0, 0, 0, 0.95) 50%,
+      #000 100%);
+  font-family: 'Courier New', monospace;
 }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center,
+      rgba(0, 255, 200, 0.15),
+      transparent 60%);
+  mix-blend-mode: screen;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+
 
 .canvas {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: -1;
 }
 
 .scroll-area {
-  height: 6000px; /* this creates scroll space */
+  height: 4000px; /* creates longer scroll space for slower video animation */
+}
+
+/* Intro styles */
+.intro {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00ffcc;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 255, 200, 0.8);
+  z-index: 10;
+  transition: opacity 1s ease;
+}
+
+.intro.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Professional sections */
+.section {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+}
+
+.section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 1rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.menu-item {
+  background: rgba(120, 0, 255, 0.1);
+  border: 1px solid rgba(0, 255, 200, 0.3);
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 200, 0.2);
+}
+
+.menu-item h3 {
+  color: #ff00ff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.menu-item p {
+  font-size: 1rem;
+  color: #ccc;
 }
